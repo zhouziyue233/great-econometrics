@@ -5,6 +5,8 @@
   "author": {
     "name": "William Zhou"
   },
-  "keywords": ["econometrics", "causal-inference", "ai-agent", "empirical-study", "workflow-automation"],
-  "claudeMd": "../CLAUDE.md"
+  "homepage": "https://github.com/zhouziyue233/great-econometrics",
+  "repository": "https://github.com/zhouziyue233/great-econometrics",
+  "license": "MIT",
+  "keywords": ["econometrics", "causal-inference", "ai-agent", "empirical-study", "workflow-automation"]
 }
