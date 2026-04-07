@@ -3,7 +3,8 @@
 > **A comprehensive econometrics plugin for end-to-end empirical research automation** — from research question scoping, literature review, and identification strategy design, through data fetching and cleaning, econometric modeling, code generation, results analysis, table and figure production, full-paper writing, and conference presentation.
 
 ![Version](https://img.shields.io/badge/version-2.2.5-blue)
-![License](https://img.shields.io/badge/license-creative commons-green)
+
+![License](https://img.shields.io/badge/license-creativecommons-green)
 
 ---
 
