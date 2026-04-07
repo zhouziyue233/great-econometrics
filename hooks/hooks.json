@@ -6,8 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'echo \"\\n╔══════════════════════════════════════════╗\"; echo \"║       📄 经济学论文工作流引导系统        ║\"; echo \"╚══════════════════════════════════════════╝\"; echo \"\\n完整工作流：\\n  Phase 1:  /question    明确研究问题与贡献\\n  Phase 2:  literature-review 技能  文献综述\\n  Phase 3:  /analyze     设计识别策略\\n  Phase 4:  /data        获取与清洗数据\\n  Phase 5:  /model       构建计量模型\\n  Phase 6:  /code        执行回归分析\\n  Phase 7:  /plot        结果分析与图表精修\\n  Phase 8:  /robustness  稳健性检验\\n  Phase 9:  /write       撰写完整论文\\n  [可选]:   /present     生成学术幻灯片\\n\\n运行 /question 开始你的论文之旅！\"'",
-            "timeout": 10
+            "command": "printf '\\n📊 Econometrics 可用技能或命令\\n\\n  Phase 1  /question    确定研究问题\\n  Phase 2  literature-review skill  文献综述\\n  Phase 3  /analyze    识别策略分析\\n  Phase 4  /data    数据准备\\n  Phase 5  /model    计量模型构建\\n  Phase 6  /code    代码执行\\n  Phase 7  /plot    结果分析\\n  Phase 8  /robustness    稳健性检验\\n  Phase 9  /write    全文写作\\n  [可选]   /present    学术幻灯片\\n'",
+            "timeout": 5
           }
         ]
       }
@@ -18,8 +18,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "You are a workflow guide for an econometrics paper writing pipeline. Review the conversation that just ended.\n\nThe pipeline has these ordered steps:\n- Phase 1: /question — Research question scoping (produces: research-question.md)\n- Phase 2: literature-review skill — Literature review (produces: literature-review-report.md)\n- Phase 3: /analyze — Identification strategy (produces: identification-memo.md)\n- Phase 4: /data — Data fetch & clean (produces: data-report.md)\n- Phase 5: /model — Model specification (produces: model-spec.md)\n- Phase 6: /code — Run regressions (produces: regression output/tables)\n- Phase 7: /plot — Results analysis & figure polish (produces: publication-ready tables/figures)\n- Phase 8: /robustness — Robustness checks (produces: robustness-report.md)\n- Phase 9: /write — Full paper writing (produces: paper/ directory)\n- Optional (no phase number): /present — Beamer slides, only relevant after Phase 9 is complete\n\nIf the assistant's last response clearly completed one of these steps (e.g. produced a key output document, finished a major analysis phase, or explicitly said a phase is done), output ONLY the following in Chinese:\n\n---\n✅ **[阶段名称]已完成！**\n\n📌 **下一步：运行 `/[command]`**\n[一句话说明下一步做什么，以及为什么现在是合适时机]\n\n💡 提示：[一句可选的小建议，帮助用户更好地进入下一阶段]\n---\n\nIf no major step was completed in this response (e.g. the user asked a question, had a discussion, or only partially worked on something), output absolutely nothing. Do not add commentary. Do not explain your reasoning.",
-            "timeout": 45
+            "prompt": "回顾对话。若完成了阶段性的研究工作，请用中文输出以下格式的小结：\n\n---\n**📋 会话小结 · Phase [X] — [阶段名]**\n\n**完成内容**：[1-2 句话]\n\n**产出文件**：\n- `文件名` —\n\n**请检查相关文件**\n\n 无修改意见，可进入下一阶段 \n---\n\n如果本次对话没有完成阶段性研究工作，不必输出任何内容。",
+            "timeout": 60
           }
         ]
       }

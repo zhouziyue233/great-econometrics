@@ -58,6 +58,7 @@ econometrics/
     ├── — Data & Literature —
     ├── data-pipeline/           # End-to-end: API fetch + clean + validate
     ├── literature-review/       # Phase 2: search, summarise & synthesise literature
+    │     └── zotero-setup.md   # Zotero MCP installation & configuration guide
     ├── scrapling/               # Web scraping toolkit for custom data collection
     │
     ├── — Writing —
@@ -84,7 +85,7 @@ econometrics/
 | **table** | "regression table", "LaTeX table", "esttab", "modelsummary", "回归表格" | Multi-model regression tables, multi-panel layouts, journal-specific formatting (AER, QJE) |
 | **figure** | "publication figure", "event study plot", "binscatter", "coefficient plot", "论文图表" | Journal-quality figures (AER/QJE standards): event study, binscatter, RDD, density, coefplot |
 | **data-pipeline** | "FRED", "World Bank", "fetch data", "clean data", "merge datasets", "获取数据", "数据清洗" | End-to-end data pipeline: API fetch (FRED, WB, IMF, BLS, OECD), cleaning, variable construction, panel validation |
-| **literature-review** | "literature review", "related work", "文献综述", "相关文献" | Search, summarize, and synthesize economics literature; identify gaps and organize findings |
+| **literature-review** | "literature review", "related work", "文献综述", "相关文献" | Search, summarize, and synthesize economics literature; identify gaps and organize findings. **Zotero integration**: auto-searches your local Zotero library before querying external APIs, and imports the final reference list into a new Zotero collection (requires [zotero-mcp](skills/literature-review/zotero-setup.md)) |
 | **paper-writing** | "write paper", "draft paper", "论文写作", "学术写作" | Draft economics papers with proper structure, journal conventions, and academic style |
 | **beamer-ppt** | "Beamer", "slides", "presentation", "PPT", "幻灯片", "演示文稿" | Create professional academic presentations in LaTeX Beamer for conferences and seminars |
 | **stata** | "stata code", "stata", "write stata code", "explain stata code" | Generates ready-to-run `.do` files for manual execution in Stata (no CLI/MCP integration); 4 themed reference guides (basics, methods, data-mgmt, output) + community packages (reghdfe, estout, csdid, rdrobust, etc.) |

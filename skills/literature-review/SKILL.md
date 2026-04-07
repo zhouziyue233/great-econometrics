@@ -130,9 +130,11 @@ Search rules:
 1. Use primary search engine for all rounds.
 2. Use supplementary sources only for following purposes:
    - More Coverage: OpenAlex results are clearly thin or missing a literature branch
+   - Cross-validation: Use Semantic Scholar to verify that key metadata (title, authors, year, citation count, DOI) returned by OpenAlex is accurate and not erroneous
    - Working paper capture: recent NBER / SSRN papers are likely relevant
-   
-3. If OpenAlex coverage is already strong and balanced, supplementary search may be skipped entirely.
+
+3. Semantic Scholar cross-validation is **mandatory** for all Core-tier papers — even when OpenAlex coverage is strong.
+4. For Background / Methodological papers, cross-validation may be skipped if OpenAlex data looks internally consistent.
 
 ### **OpenAlex API**
 
@@ -316,7 +318,7 @@ https://api.openalex.org/works?filter=authorships.author.id:AUTHOR_ID&sort=cited
 
 #### Supplementary Sources
 
-**Semantic Scholar (for more coverage)**
+**Semantic Scholar (for more coverage + cross-validation of OpenAlex data)**
 
 **API Key Check (one-time per session):**
 
@@ -324,8 +326,8 @@ Read `.env` and look for `SEMANTIC_SCHOLAR_API_KEY`.
 
 - **If the key is absent or still a placeholder:** Use `AskUserQuestion` to prompt:
 
-  > *"Semantic Scholar 可作为 OpenAlex 的补充来源（捕获遗漏文献）。配置 API Key 可获得更高请求速率：*
-  > *① 访问 [https://www.semanticscholar.org/product/api](https://www.semanticscholar.org/product/api)  → 申请 API Key (或直接闲鱼搜索Semantic Scholar API 购买，小钱)*
+  > *"Semantic Scholar 可作为 OpenAlex 的补充来源（捕获遗漏文献或作交叉检验）。配置 API Key 可获得更高请求速率：*
+  > *① 访问 [https://www.semanticscholar.org/product/api](https://www.semanticscholar.org/product/api)  → 申请 API Key (建议直接闲鱼搜索Semantic Scholar API 购买)*
   > *② 将 Key 粘贴至此；若暂无 Key，直接回车跳过（将使用公共接口，速率受限）。"*
 
   - If user provides key: append `SEMANTIC_SCHOLAR_API_KEY=<value>` to `.env` (standard `KEY=VALUE` format — **not JSON**; replace existing line if present). Set flag `SS_AUTH = True`. Confirm: *"✅ Semantic Scholar API Key 已保存。"*
@@ -420,6 +422,18 @@ https://api.semanticscholar.org/graph/v1/paper/ARXIV:2301.05345?fields=title,yea
 
 1. **Coverage gap check** — run 1–2 keyword searches using queries that diverged from OpenAlex (e.g., different phrasing). Flag any papers in the top 20 Semantic Scholar results that are *absent* from the OpenAlex candidate list with citation count > 20.
 2. **Abstract retrieval** — if OpenAlex `abstract_inverted_index` is missing for a Core candidate, use Semantic Scholar to retrieve the full plain-text abstract directly.
+3. **Cross-validation of OpenAlex metadata** — for each paper, look it up on Semantic Scholar by DOI or title and compare the following fields against the OpenAlex record:
+
+   | Field | Check |
+   |-------|-------|
+   | Title | Exact match? Flag truncations or garbled characters |
+   | Authors | Same author list and order? Flag missing/extra authors |
+   | Year | Published year matches? |
+   | Journal / Venue | Consistent journal name? |
+   | DOI | DOI present and resolves to the same paper? |
+   
+
+**If a discrepancy is found:** note it in the paper entry with a `⚠️ Data discrepancy` tag and flag for manual verification. Do **not** silently carry forward potentially incorrect OpenAlex metadata into the final literature table.
 
 **arXiv (for latest economics preprints and working papers)**
 
@@ -830,7 +844,21 @@ Use `@unpublished` for working papers not yet published in a journal.
 
 ## Final Output: literature-review-report.md
 
-After finishing all steps above, write the final literature review report and save it as `literature-review-report.md` in the working directory. 
+After finishing all steps above, write the final literature review report and save it as `literature-review-report.md` in the working directory.
+
+**Mandatory post-delivery reminder:**
+
+After presenting the report link to the user, you **must** append the following notice:
+
+> ---
+> ### ⚠️ 学术诚信提示：请用其他大模型交叉核验文献
+>
+> 本报告已通过 OpenAlex + Semantic Scholar 交叉检验文献的元数据（标题、作者、期刊、年份）。尽管如此，**AI 生成的文献列表仍可能存在幻觉**。
+>
+> **强烈建议**将文献列表粘贴至 **ChatGPT**、**Gemini** 或其他独立大模型，并询问：
+> 
+> > *"请逐条检验以下文献是否真实存在，标题、作者、期刊、年份是否准确无误。"*
+> 
 
 **Example format of literature review report:**
 
@@ -914,3 +942,4 @@ Autor, D. H., Manning, A., & Smith, C. L. (2016). The contribution of the minimu
 - ❌ Confusing correlation with causation when describing OLS results
 - ❌ Citing papers you have not read (mischaracterizing findings)
 - ❌ Vague gap identification ("more research is needed") — be specific
+- ❌ **Skipping the post-delivery integrity reminder** — always tell the user to cross-check the final reference list with ChatGPT / Gemini or another independent LLM before citing. AI-generated reference lists carry hallucination risk even after API-based cross-validation; a second-model sanity check is the last line of defence for academic integrity.
