@@ -1,0 +1,10 @@
+{
+  "name": "econometrics",
+  "version": "2.2.4",
+  "description": "A comprehensive econometrics skills set for empirical study, covering the complete workflow of empirical study.",
+  "author": {
+    "name": "William Zhou"
+  },
+  "keywords": ["econometrics", "causal-inference", "ai-agent", "empirical-study", "workflow-automation"],
+  "claudeMd": "../CLAUDE.md"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "great-econometrics",
+  "description": "A comprehensive econometrics skills set for empirical research, covering the complete workflow from research question scoping to publication-ready output.",
+  "owner": {
+    "name": "William Zhou",
+    "email": "719957352@qq.com"
+  },
+  "metadata": {
+    "description": "Empirical research automation for economics — causal inference, IV, DiD, RDD, panel data, and full publication workflow targeting top-5 journals."
+  },
+  "plugins": [
+    {
+      "name": "econometrics",
+      "source": "./",
+      "description": "A comprehensive econometrics skills set for empirical study, covering the complete workflow of empirical research.",
+      "version": "2.2.4",
+      "author": {
+        "name": "William Zhou",
+        "email": "719957352@qq.com",
+        "url": "https://github.com/zhouziyue233/great-econometrics"
+      },
+      "homepage": "https://github.com/zhouziyue233/great-econometrics",
+      "repository": "https://github.com/zhouziyue233/great-econometrics",
+      "license": "MIT",
+      "category": "research",
+      "keywords": [
+        "econometrics",
+        "causal-inference",
+        "ai-agent",
+        "empirical-study",
+        "workflow-automation",
+        "stata",
+        "r",
+        "python",
+        "latex",
+        "economics"
+      ],
+      "tags": [
+        "econometrics",
+        "research",
+        "causal-inference",
+        "empirical-workflow"
+      ]
+    }
+  ]
+}
