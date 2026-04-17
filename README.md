@@ -1,10 +1,12 @@
 # Great-Econometrics Plugin
+<p align="center"><img src="./icon.png" width="200"></p>
 
 > **A comprehensive econometrics plugin for end-to-end empirical research automation** — from research question scoping, literature review, and identification strategy design, through data fetching and cleaning, econometric modeling, code generation, results analysis, table and figure production, full-paper writing, and conference presentation.
 
-![Version](https://img.shields.io/badge/version-2.2.6-blue)
+<p align="center">
+  <img src="https://img.shields.io/badge/version-2.2.6-blue" alt="Version">
+</p>
 
-© All Rights Reserved.
 
 ---
 
@@ -189,3 +191,6 @@ All skills and commands generate code in:
 - **R** — `fixest`, `plm`, `AER`, `rdrobust`, `did`, `grf`, `DoubleML`, `modelsummary`, `Synth`
 - **Stata** — `reghdfe`, `ivreg2`, `rdrobust`, `csdid`, `ddml`, `synth`, `estout`
 
+---
+
+© All Rights Reserved.
